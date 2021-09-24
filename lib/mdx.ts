@@ -1,26 +1,25 @@
-import { bundleMDX } from 'mdx-bundler'
 import fs from 'fs'
 import matter from 'gray-matter'
+import { bundleMDX } from 'mdx-bundler'
 import path from 'path'
 import readingTime from 'reading-time'
-import { visit } from 'unist-util-visit'
-import type { Pluggable } from 'unified'
-import getAllFilesRecursively from './utils/files'
-import { PostFrontMatter } from 'types/PostFrontMatter'
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
-import { Toc } from 'types/Toc'
-// Remark packages
-import remarkGfm from 'remark-gfm'
-import remarkFootnotes from 'remark-footnotes'
-import remarkMath from 'remark-math'
-import remarkCodeTitles from './remark-code-title'
-import remarkTocHeadings from './remark-toc-headings'
-import remarkImgToJsx from './remark-img-to-jsx'
-// Rehype packages
-import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import rehypePrismPlus from 'rehype-prism-plus'
+// Rehype packages
+import rehypeSlug from 'rehype-slug'
+import remarkFootnotes from 'remark-footnotes'
+// Remark packages
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
+import { PostFrontMatter } from 'types/PostFrontMatter'
+import { Toc } from 'types/Toc'
+import type { Pluggable } from 'unified'
+import remarkCodeTitles from './remark-code-title'
+import remarkImgToJsx from './remark-img-to-jsx'
+import remarkTocHeadings from './remark-toc-headings'
+import getAllFilesRecursively from './utils/files'
 
 const root = process.cwd()
 
@@ -105,13 +104,13 @@ export async function getFileBySlug<T>(type: 'authors' | 'blog', slug: string | 
   return {
     mdxSource: code,
     toc,
-    frontMatter: {
+    frontMatter: ({
       readingTime: readingTime(code),
       slug: slug || null,
       fileName: fs.existsSync(mdxPath) ? `${slug}.mdx` : `${slug}.md`,
       ...frontmatter,
       date: frontmatter.date ? new Date(frontmatter.date).toISOString() : null,
-    },
+    } as any) as T,
   }
 }
 
