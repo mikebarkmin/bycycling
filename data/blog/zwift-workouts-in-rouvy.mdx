@@ -1,0 +1,61 @@
+---
+title: Zwift Workouts in Rouvy
+date: '2021-09-25'
+tags: ['Rouvy', 'Zwift', 'MRC', 'Workouts']
+draft: false
+summary:
+images: []
+layout: PostLayout
+---
+
+For of all I think, that [Rouvy](http://rouvy.com) is a great piece of software,
+but it is lacking good structured workouts. This is a huge benefit of other
+platforms like [Traineroad](https://www.trainerroad.com/) or
+[Zwift](https://zwift.com). Especially the Zwift Academy caught my eye as I was
+searching for good workouts, which I could replicate with the [Rouvy Workout
+Editor](https://my.rouvy.com/workouts/create). After I have convert the first
+Academy Workout V02 Over/Unders I was unmotivated to convert the rest of them. I
+took a long time to replicate them by hand and ramps are not supported by Rouvy.
+
+Since I am a programmer by heart, I developed a little tool which assists me
+with the task. My [MRC Workout Converter](/tools/mrc-workout-creator) converts
+workouts from a simple language to an MRC file, which can be imported into
+Rouvy.
+
+The language consists of simple statements, which are compatible which [Whats on
+Zwift?](https://whatsonzwift.com). So you can take any workout, which is on
+Zwift and convert it to an MRC file and therefore to a Rouvy workout.
+
+Here is an example of a simple interval workout:
+
+```
+10min from 40 to 85% FTP
+30sec @ 90% FTP
+3min @ 55% FTP
+10x 10sec 150% FTP,
+1min @ 70% FTP
+10min from 50 to 35% FTP
+```
+
+My tool will create a chart like the bottom one. On top of the right-hand side
+you can see a little download button, which you can use to download the MRC
+file. You also get additional information like duration, intensity and zone distribution.
+
+<WozChart
+  title="Short Sprints x10"
+  allowDownload
+  woz={`10min from 40 to 85% FTP
+30sec @ 90% FTP
+3min @ 55% FTP
+10x 10sec 150% FTP,
+1min @ 70% FTP
+10min from 50 to 35% FTP`}
+/>
+
+Due to legal reasons I will not share the converted Zwift Academy Workouts on my
+website or make the Rouvy workouts public, you need to do the extra step and
+convert them yourself.
+
+I hope you will enjoy the tool and your cool new workouts :)
+
+<BlogNewsletterForm />
