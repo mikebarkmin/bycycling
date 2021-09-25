@@ -96,7 +96,7 @@ export const wozToMrc = (
   title = `bycycling-${new Date().toLocaleDateString()}`,
   timePerUnit = 0.5
 ) => {
-  const lines = data.replace(',\n', ',').split('\n')
+  const lines = data.replaceAll(',\n', ',').split('\n')
   const mrcData = lines.flatMap((l) => {
     if (detectType(l) === 'ramp') {
       return convertRampToMrc(l, timePerUnit)
