@@ -14,7 +14,7 @@ export default function WozToMrc() {
 10min from 70 to 30% FTP`)
   const [mrc, setMrc] = useState('')
   const [state, setState] = useState<'default' | 'error'>('default')
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState('Late Sprints')
 
   useEffect(() => {
     try {
