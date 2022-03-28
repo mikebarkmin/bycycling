@@ -18,7 +18,7 @@ export default function WozToMrc() {
 
   useEffect(() => {
     try {
-      setMrc(wozToMrc(woz))
+      setMrc(wozToMrc(woz, title))
       setState('default')
     } catch (e) {
       setState('error')
@@ -68,13 +68,13 @@ export default function WozToMrc() {
         )}
         {state === 'error' && <p className="text-red-500">The input has an error</p>}
         <input
-          className="px-4 py-2 my-2 border rounded text-gray-800 w-full "
+          className="px-4 py-2 my-2 border rounded text-gray-800 w-full bg-white"
           placeholder="Name of the workout"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
-          className="h-96 px-4 py-2 my-2 border rounded text-gray-800 w-full"
+          className="h-96 px-4 py-2 my-2 border rounded text-gray-800 bg-white w-full"
           value={woz}
           onChange={handleChange}
         />
