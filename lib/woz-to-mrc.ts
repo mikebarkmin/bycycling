@@ -120,7 +120,7 @@ export const wozToMrc = (
     '[COURSE HEADER]',
     'VERSION = 2',
     'UNITS = ENGLISH',
-    `FILE NAME = ${title}.mrc`,
+    `FILE NAME = ${title}`,
     'MINUTES PERCENT',
     '[END COURSE HEADER]',
     '[COURSE DATA]',
