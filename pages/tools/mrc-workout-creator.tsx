@@ -23,7 +23,7 @@ export default function WozToMrc() {
     } catch (e) {
       setState('error')
     }
-  }, [woz])
+  }, [woz, title])
 
   const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setWoz(e.target.value)
