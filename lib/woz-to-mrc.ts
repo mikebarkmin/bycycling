@@ -32,7 +32,7 @@ const convertRampToMrc = (line: string, timePerUnit: number): [number, number][]
   const startFtp = n.shift()
   const endFtp = n.shift()
 
-  const units = Math.round(durationMin / timePerUnit)
+  const units = Math.round(durationMin / timePerUnit) - 1
   const ftpPerUnit = (endFtp - startFtp) / units
 
   const data: [number, number][] = []
@@ -50,7 +50,10 @@ const convertRampToMrc = (line: string, timePerUnit: number): [number, number][]
       time += timePerUnit
     }
   }
-  data.push([durationMin - time, endFtp])
+  if (durationMin - time > 0) {
+    data.push([durationMin - time, endFtp])
+  }
+  console.log(data)
   return data
 }
 
@@ -114,13 +117,12 @@ export const wozToMrc = (
     courseData.push(`${m[0].toFixed(2)}\t${m[1].toFixed(2)}`)
     lastMrcData = m
   })
-  courseData.pop()
 
   return [
     '[COURSE HEADER]',
     'VERSION = 2',
     'UNITS = ENGLISH',
-    `FILE NAME = ${title}`,
+    `FILE NAME = ${title}.mrc`,
     'MINUTES PERCENT',
     '[END COURSE HEADER]',
     '[COURSE DATA]',
